@@ -1,6 +1,6 @@
 /**
  * 
- * @author myriam
+ * @author myria
  *
  */
 
@@ -39,7 +39,7 @@ public class MyList {
 			premiere = premiere.getCellule(); 
 		}*/
 		
-		return size;
+		return size -1;
 	}
 	
 
@@ -82,18 +82,24 @@ public class MyList {
 	}
 	
 	public String get(int index) {
+		if (index <0 || index > this.size()) {
+			throw new IndexOutOfBoundsException();
+		}
+		Cell it = ref_premiere;
 		for (int i = 0; i < index ; i++) {
-			ref_premiere = ref_premiere.getCellule_suiv();	
+			it = it.getCellule_suiv();	
 			}
-		return ref_premiere.getContenu();
+		return it.getContenu();
 		
 	}
 	
 	
 	public int sumLetters() {
+		Cell temp = this.ref_premiere;
 		int sum =0;
-		for (int i = 0; i < size; i++) {
-			
+		while (temp != null) {
+			sum += temp.toString().length();
+			temp = temp.getCellule_suiv();
 		}
 		return sum;
 	} 
@@ -112,8 +118,6 @@ public class MyList {
 	    return sb.toString();
 	}
 
-
-
 	public static void main(String[] args) {
 		
 		MyList ml = new MyList();
@@ -121,9 +125,13 @@ public class MyList {
 		ml.add("toto");
 		ml.add("titi");
 		ml.addLast("tutu");
-		ml.add("test",2);
+		//ml.add("test",2);
 		System.out.println("Taille de la liste : " + ml.size());
+		System.out.println("Somme des lettres: " + ml.sumLetters());
+
 		System.out.println(ml.toString());
+		
+
 
 	}
 
