@@ -98,7 +98,7 @@ public class MyList {
 		Cell temp = this.ref_premiere;
 		int sum =0;
 		while (temp != null) {
-			sum += temp.toString().length();
+			sum += temp.getContenu().length();
 			temp = temp.getCellule_suiv();
 		}
 		return sum;
