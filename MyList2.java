@@ -85,12 +85,15 @@ public class MyList2<T> {
 	
 	
 	public int sumLetters() {
+		Cell2<T> temp = this.ref_premiere;
 		int sum =0;
-		for (int i = 0; i < size; i++) {
-			
+		while (temp != null) {
+			sum += ((String) temp.getContenu()).length();
+			temp = temp.getCellule_suiv();
 		}
 		return sum;
 	} 
+	
 	
 	public boolean contains(T object) {
 		if(ref_premiere.getCellule_suiv().equals(object)) {
